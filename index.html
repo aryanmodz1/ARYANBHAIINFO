@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ARYANBHAI's API Hub</title>
+<title>aryanbhai's API Hub</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -258,7 +258,7 @@
 <!-- ===== LOCK SCREEN ===== -->
 <div id="lockScreen">
   <div class="lock-card">
-    <h2>🔒 ARYANBHAI's API Hub</h2>
+    <h2>🔒 aryanbhai's API Hub</h2>
     <p>Password daal bhai</p>
     <input id="lockInput" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPass()" />
     <button onclick="checkPass()">Unlock</button>
@@ -270,10 +270,10 @@
 <div class="container" id="mainContent">
 
   <header>
-    <h1>ARYANBHAI's API Hub</h1>
+    <h1>aryanbhai's API Hub</h1>
     <p>Free & premium APIs — number info, tools, utilities, and more.</p>
     <div class="badge">
-      Made by <strong>ARYANBHAI</strong> &nbsp;·&nbsp;
+      Made by <strong>aryanbhai</strong> &nbsp;·&nbsp;
       <a href="https://youtube.com/@YourChannelHere" target="_blank">YouTube</a> &nbsp;·&nbsp;
       <a href="https://t.me/YourTelegramHere" target="_blank">Telegram</a>
     </div>
@@ -370,7 +370,7 @@
   </div>
 
   <footer>
-    © 2026 ARYANBHAI's API Hub &nbsp;·&nbsp;
+    © 2026 aryanbhai's API Hub &nbsp;·&nbsp;
     <a href="https://youtube.com/@YourChannelHere" target="_blank">YouTube</a>
     <a href="https://t.me/YourTelegramHere" target="_blank">Telegram</a>
   </footer>
@@ -378,8 +378,8 @@
 </div>
 
 <script>
-const PASSWORD = "ARYANBHAIpapa";
-const STORAGE_KEY = "ARYANBHAI_hub_unlocked";
+const PASSWORD = "aryanbhaipapa";
+const STORAGE_KEY = "aryanbhai_hub_unlocked";
 
 window.addEventListener('DOMContentLoaded', () => {
   if (sessionStorage.getItem(STORAGE_KEY) === "yes") {
@@ -412,7 +412,7 @@ function genKey() {
 
   const rand = Math.random().toString(36).slice(2, 10).toUpperCase();
   const prefix = plan === 'life' ? 'LIFE' : plan === '3d' ? 'D3' : 'D2';
-  const key = `ARYANBHAI-${prefix}-${user.slice(0,6).toUpperCase()}-${rand}`;
+  const key = `aryanbhai-${prefix}-${user.slice(0,6).toUpperCase()}-${rand}`;
 
   const fullUrl = `${window.location.origin}/api/number/${key}?number=${encodeURIComponent(number)}`;
 
