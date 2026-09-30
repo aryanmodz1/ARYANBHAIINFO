@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     return res.status(400).json({
       status: "error",
       message: "number parameter required",
-      developer: "ARYANBHAI",
+      developer: "aryanbhai",
       youtube: "https://youtube.com/@YourChannelHere"
     });
   }
@@ -22,16 +22,16 @@ export default async function handler(req, res) {
     return res.status(401).json({
       status: "error",
       message: "key required",
-      developer: "ARYANBHAI",
+      developer: "aryanbhai",
       youtube: "https://youtube.com/@YourChannelHere"
     });
   }
 
-  if (!key.startsWith('ARYANBHAI-')) {
+  if (!key.startsWith('aryanbhai-')) {
     return res.status(401).json({
       status: "error",
       message: "invalid key",
-      developer: "ARYANBHAI"
+      developer: "aryanbhai"
     });
   }
 
@@ -45,14 +45,14 @@ export default async function handler(req, res) {
       status: data.status || "success",
       number: data.number || number,
       data: data.data || null,
-      developer: "ARYANBHAI",
+      developer: "aryanbhai",
       youtube: "https://youtube.com/@YourChannelHere"
     });
   } catch (err) {
     return res.status(500).json({
       status: "error",
       message: "upstream fetch failed",
-      developer: "ARYANBHAI",
+      developer: "aryanbhai",
       youtube: "https://youtube.com/@YourChannelHere"
     });
   }
