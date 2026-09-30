@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   }
 
   const { number } = req.query;
-  const key = req.query.key  req.query.slug  null;
+  const key = req.query.key || req.query.slug || null;
 
   if (!number) {
     return res.status(400).json({
