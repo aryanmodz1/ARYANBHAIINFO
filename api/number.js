@@ -1,4 +1,5 @@
 export default async function handler(req, res) {
+  // CORS Headers Handle Karo
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
@@ -6,6 +7,7 @@ export default async function handler(req, res) {
     return res.status(204).end();
   }
 
+  // Parameters
   const { number } = req.query;
   const key = req.query.key || req.query.slug || null;
 
@@ -13,8 +15,7 @@ export default async function handler(req, res) {
     return res.status(400).json({
       status: "error",
       message: "number parameter required",
-      developer: "aryanbhai",
-      youtube: "https://youtube.com/@YourChannelHere"
+      developer: "aryanbhai"
     });
   }
 
@@ -22,35 +23,36 @@ export default async function handler(req, res) {
     return res.status(401).json({
       status: "error",
       message: "key required",
-      developer: "aryanbhai",
-      youtube: "https://youtube.com/@YourChannelHere"
-    });
-  }
-
-  if (!key.startsWith('aryanbhai-')) {
-    return res.status(401).json({
-      status: "error",
-      message: "invalid key",
       developer: "aryanbhai"
     });
   }
 
   try {
-   const upstream = await fetch(
-    `https://numberinfo-api-adibhai.vercel.app/api/number?number=${encodeURIComponent(number)}`
-     );
-  const data = await upstream.json();
+    const upstream = await fetch(
+      `https://numberinfo-api-adibhai.vercel.app/api/number?number=${encodeURIComponent(number)}`
+    );
 
-  // 🔍 Check karne ke liye Vercel Logs mein raw data print karein:
-  console.log("UPSTREAM RESPONSE:", JSON.stringify(data));
+    if (!upstream.ok) {
+      return res.status(502).json({
+        status: "error",
+        message: `Upstream error status: ${upstream.status}`,
+        developer: "aryanbhai"
+      });
+    }
+
+    const data = await upstream.json();
 
     return res.status(200).json({
-    status: data.status || "success",
-    number: data.number || number,
-    data: data.data || data, // 👈 'data.data' na hone par poora 'data' bhejega
-    developer: "aryanbhai",
-    youtube: "https://youtube.com/@YourChannelHere"
-   });
+      status: data.status || "success",
+      number: data.number || number,
+      data: data.data || data,
+      developer: "aryanbhai"
+    });
   } catch (err) {
-  // ...
+    return res.status(500).json({
+      status: "error",
+      message: "Upstream fetch failed: " + err.message,
+      developer: "aryanbhai"
+    });
+  }
 }
