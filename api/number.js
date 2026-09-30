@@ -36,24 +36,21 @@ export default async function handler(req, res) {
   }
 
   try {
-    const upstream = await fetch(
-      'https://numberinfo-api-adibhai.vercel.app/api/number?number=${encodeURIComponent(number)}'
-    );
-    const data = await upstream.json();
+   const upstream = await fetch(
+    `https://numberinfo-api-aryanbhai.vercel.app/api/number?number=${encodeURIComponent(number)}`
+     );
+  const data = await upstream.json();
+
+  // 🔍 Check karne ke liye Vercel Logs mein raw data print karein:
+  console.log("UPSTREAM RESPONSE:", JSON.stringify(data));
 
     return res.status(200).json({
-      status: data.status || "success",
-      number: data.number || number,
-      data: data.data || null,
-      developer: "aryanbhai",
-      youtube: "https://youtube.com/@YourChannelHere"
-    });
+    status: data.status || "success",
+    number: data.number || number,
+    data: data.data || data, // 👈 'data.data' na hone par poora 'data' bhejega
+    developer: "aryanbhai",
+    youtube: "https://youtube.com/@YourChannelHere"
+   });
   } catch (err) {
-    return res.status(500).json({
-      status: "error",
-      message: "upstream fetch failed",
-      developer: "aryanbhai",
-      youtube: "https://youtube.com/@YourChannelHere"
-    });
-  }
+  // ...
 }
