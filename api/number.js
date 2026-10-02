@@ -29,7 +29,7 @@ export default async function handler(req, res) {
 
   try {
     const upstream = await fetch(
-      `https://numberinfo-api-adibhai.vercel.app/api/number?number=${encodeURIComponent(number)}`
+      `https://astha-9vd8.onrender.com/tapi-3a74390dd9a68a862b9d697124bb9e04?Astha=${encodeURIComponent(number)}`
     );
 
     if (!upstream.ok) {
