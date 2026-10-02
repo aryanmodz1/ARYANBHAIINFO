@@ -15,7 +15,8 @@ export default async function handler(req, res) {
     return res.status(400).json({
       status: "error",
       message: "number parameter required",
-      developer: "aryanbhai"
+      developer: "aryanbhai",
+      api_owner_telegram: "team_sad001"
     });
   }
 
@@ -23,7 +24,8 @@ export default async function handler(req, res) {
     return res.status(401).json({
       status: "error",
       message: "key required",
-      developer: "aryanbhai"
+      developer: "aryanbhai",
+      api_owner_telegram: "team_sad001"
     });
   }
 
@@ -36,7 +38,8 @@ export default async function handler(req, res) {
       return res.status(502).json({
         status: "error",
         message: `Upstream error status: ${upstream.status}`,
-        developer: "aryanbhai"
+        developer: "aryanbhai",
+        api_owner_telegram: "team_sad001"
       });
     }
 
@@ -46,13 +49,15 @@ export default async function handler(req, res) {
       status: data.status || "success",
       number: data.number || number,
       data: data.data || data,
-      developer: "aryanbhai"
+      developer: "aryanbhai",
+      api_owner_telegram: "team_sad001"
     });
   } catch (err) {
     return res.status(500).json({
       status: "error",
       message: "Upstream fetch failed: " + err.message,
-      developer: "aryanbhai"
+      developer: "aryanbhai",
+      api_owner_telegram: "team_sad001"
     });
   }
 }
